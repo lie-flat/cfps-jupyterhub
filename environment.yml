@@ -1,0 +1,7 @@
+name: cfps
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10.1
+  - pip
+  - jupyterhub
