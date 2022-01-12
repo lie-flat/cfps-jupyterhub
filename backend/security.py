@@ -3,11 +3,11 @@ import re
 from jose import jwt
 from passlib.context import CryptContext
 
+from .config import SECURITY_KEY
+
 # to get a string like this run:
 # openssl rand -hex 32
-from pydantic import BaseModel
 
-SECRET_KEY = "d65ee93418681ef24a23065bb7e7bab7e790c32b79e375cb883334b48180b272"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 

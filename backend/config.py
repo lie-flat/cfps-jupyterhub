@@ -1,2 +1,3 @@
 port = 5432
 invite_codes = {'114514'}
+SECURITY_KEY = "d65ee93418681ef24a23065bb7e7bab7e790c32b79e375cb883334b48180b272"
