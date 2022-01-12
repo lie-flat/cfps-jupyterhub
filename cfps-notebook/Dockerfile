@@ -66,6 +66,11 @@ RUN MPLBACKEND=Agg python -c "import matplotlib.pyplot" && \
 COPY requirements.txt /tmp/requirements.txt
 RUN pip3 install --no-cache -r /tmp/requirements.txt
 
+RUN mkdir "/home/${NB_USER}/data" && \
+    fix-permissions "/home/${NB_USER}/data" && \
+    mkdir "/home/${NB_USER}/team-shared" && \
+    fix-permissions "/home/${NB_USER}/team-shared"
+
 USER ${NB_UID}
 
 WORKDIR "${HOME}"
