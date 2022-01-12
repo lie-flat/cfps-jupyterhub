@@ -1,0 +1,3 @@
+jupyterhub-proxy.pid
+jupyterhub_cookie_secret
+jupyterhub.sqlite
