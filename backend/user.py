@@ -7,7 +7,7 @@ from starlette import status
 from .security import decode_token, create_access_token, verify_password, validate_password_strength
 from .schemas import User, RegisterInfo, TokenData
 from .db import get_db, get_user_by_username, create_user
-from .config import invite_codes
+from .config import invite_codes, HUB_CLIENT_ID, HUB_CLIENT_SECRET
 
 router = APIRouter()
 
@@ -51,6 +51,13 @@ async def get_current_active_user(current_user: User = Depends(get_current_user)
 
 @router.post("/user-login")
 async def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
+    if form_data.client_id == HUB_CLIENT_ID and form_data.client_secret != HUB_CLIENT_SECRET:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid client credentials",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+
     user = authenticate_user(db, form_data.username, form_data.password)
     if not user:
         raise HTTPException(
