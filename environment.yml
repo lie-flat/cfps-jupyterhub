@@ -5,3 +5,11 @@ dependencies:
   - python=3.10.1
   - pip
   - jupyterhub
+  - oauthenticator
+  - fastapi
+  - uvicorn[standard]
+  - python-multipart
+  - python-jose[cryptography]
+  - passlib[bcrypt]
+  - dockerspawner
+  - jupyter_client
