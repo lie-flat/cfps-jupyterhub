@@ -14,7 +14,7 @@ c.JupyterHub.hub_ip = public_ips()[0]
 print(c.JupyterHub.hub_ip)
 
 notebook_dir = os.environ.get(
-    'DOCKER_NOTEBOOK_DIR') or '/home/jovyan/persistent'
+    'DOCKER_NOTEBOOK_DIR') or '/home/jovyan'
 c.DockerSpawner.notebook_dir = notebook_dir
 c.DockerSpawner.container_image = "rsworktech/cfps-notebook:latest"
 c.DockerSpawner.volumes = {
