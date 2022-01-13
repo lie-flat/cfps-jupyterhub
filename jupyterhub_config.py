@@ -1,5 +1,7 @@
 # Configuration file for jupyterhub.
 import os
+from jupyter_client.localinterfaces import public_ips
+from backend.config import HUB_CLIENT_ID, HUB_CLIENT_SECRET
 
 c = get_config()
 
@@ -24,3 +26,12 @@ c.DockerSpawner.volumes = {
     'cfps-team-shared': '/home/jovyan/team-shared'
 }
 c.Spawner.mem_limit = '0.9G'
+
+c.JupyterHub.authenticator_class = "generic"
+c.GenericOAuthenticator.oauth_callback_url = '/hub/oauth_callback'
+c.GenericOAuthenticator.client_id = HUB_CLIENT_ID
+c.GenericOAuthenticator.client_secret = HUB_CLIENT_SECRET
+c.GenericOAuthenticator.login_service = '统一身份认证服务'
+c.GenericOAuthenticator.userdata_url = '/api/user-data'
+c.GenericOAuthenticator.token_url = '/api/user-login'
+c.GenericOAuthenticator.username_key = 'username'
