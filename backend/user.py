@@ -11,7 +11,7 @@ from .config import invite_codes, HUB_CLIENT_ID, HUB_CLIENT_SECRET
 
 router = APIRouter()
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="user-login")
 
 
 def authenticate_user(db, username, password):
