@@ -1,6 +1,11 @@
 # Configuration file for jupyterhub.
 import os
+import sys
+import pathlib
 from jupyter_client.localinterfaces import public_ips
+
+sys.path.append(str(pathlib.Path(__file__).parent.resolve()))
+
 from backend.config import HUB_CLIENT_ID, HUB_CLIENT_SECRET
 
 c = get_config()
@@ -28,7 +33,7 @@ c.DockerSpawner.volumes = {
 }
 c.Spawner.mem_limit = '0.9G'
 
-c.JupyterHub.authenticator_class = "generic"
+c.JupyterHub.authenticator_class = "oauthenticator.generic.GenericOAuthenticator"
 c.GenericOAuthenticator.oauth_callback_url = '/hub/oauth_callback'
 c.GenericOAuthenticator.client_id = HUB_CLIENT_ID
 c.GenericOAuthenticator.client_secret = HUB_CLIENT_SECRET
