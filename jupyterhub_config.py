@@ -17,6 +17,7 @@ c.JupyterHub.cookie_max_age_days = 7
 c.JupyterHub.spawner_class = 'dockerspawner.DockerSpawner'
 
 c.JupyterHub.bind_url = 'http://127.0.0.1:8000'  # 因为有 nginx, 所以代理只监听 127.0.0.1:8000 即可
+c.JupyterHub.base_url = '/jupyter'
 
 c.JupyterHub.hub_ip = public_ips()[0]
 print(c.JupyterHub.hub_ip)
