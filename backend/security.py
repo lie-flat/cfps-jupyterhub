@@ -3,7 +3,7 @@ import re
 from jose import jwt
 from passlib.context import CryptContext
 
-from .config import SECURITY_KEY
+from .config import SECRET_KEY
 
 # to get a string like this run:
 # openssl rand -hex 32
@@ -41,6 +41,6 @@ def validate_password_strength(password):
     """
     Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special characters
     """
-    if not re.match(r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#?!@$%^&*_-]).{8,128}$", password):
+    if not re.match(r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#?!@$%^&*_=|+-]).{8,128}$", password):
         return False
     return True
