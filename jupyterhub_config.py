@@ -43,3 +43,5 @@ c.GenericOAuthenticator.userdata_url = f'http://127.0.0.1:{port}/user-data'
 c.GenericOAuthenticator.token_url = f'http://127.0.0.1:{port}/token'
 c.GenericOAuthenticator.authorize_url = '/login'
 c.GenericOAuthenticator.username_key = 'username'
+
+c.Spawner.environment = {'LANG': 'zh_CN.utf8'}
