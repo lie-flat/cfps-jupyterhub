@@ -22,7 +22,7 @@ const RoundedImageContainer = styled.div`
 const StyledJupyterIcon = () => (
     <RoundedImageContainer>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/jupyter.svg" alt="Jupyter Logo"/>
+        <img src="/icon-jupyter.svg" alt="Jupyter Logo"/>
     </RoundedImageContainer>
 );
 
