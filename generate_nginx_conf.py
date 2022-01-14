@@ -1,11 +1,17 @@
 from backend.config import port
 import pathlib
+import sys
 
 root = pathlib.Path(__file__).parent.resolve()
 
 DOMAIN_NAME = "hub.kxxt.tech"
 
-with open("site.template.conf", "r", encoding='utf-8') as f:
+if len(sys.argv) > 1:
+    mode = sys.argv[1]
+else:
+    mode = "dev"
+
+with open(f"{mode}.template.conf", "r", encoding='utf-8') as f:
     template = f.read()
 
 with open(f"{DOMAIN_NAME}.conf", "w", encoding='utf-8') as f:
