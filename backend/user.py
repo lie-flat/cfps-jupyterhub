@@ -45,7 +45,7 @@ async def get_current_user(token: str = Depends(oauth2_scheme), db: Session = De
 
 async def get_current_active_user(current_user: User = Depends(get_current_user)):
     if current_user.disabled:
-        raise HTTPException(status_code=400, detail="Inactive user")
+        raise HTTPException(status_code=400, detail="账户已停用")
     return current_user
 
 
@@ -62,7 +62,7 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = 
     if not user:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Incorrect username or password",
+            detail="用户名或密码错误",
             headers={"WWW-Authenticate": "Bearer"},
         )
     access_token = create_access_token({"sub": user.username})
@@ -72,13 +72,13 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = 
 @router.post("/user-register/", response_model=User)
 async def register(form_data: RegisterInfo, db: Session = Depends(get_db)):
     if form_data.invite_code not in invite_codes:
-        raise HTTPException(status_code=400, detail="Invalid invite code")
+        raise HTTPException(status_code=400, detail="邀请码无效")
     if not validate_password_strength(form_data.password):
-        raise HTTPException(status_code=400, detail="Password is too weak")
+        raise HTTPException(status_code=400, detail="你的密码太弱了")
     try:
         user = create_user(db, form_data)
     except:
-        raise HTTPException(status_code=400, detail="User already exists or DB error!")
+        raise HTTPException(status_code=400, detail="用户已存在")
     return User(username=user.username)
 
 
