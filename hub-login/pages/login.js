@@ -11,6 +11,7 @@ import StyledJupyterIcon from "../components/jupyter-icon";
 import axios from "axios";
 import UserIcon from "../components/user-icon";
 import PasswordIcon from "../components/password-icon";
+import FormLayout from "../components/form-layout";
 
 const getParams = () => {
     return new URLSearchParams(window.location.search);
@@ -51,13 +52,13 @@ export default function Login() {
         </Form>)}
     </Formik>);
 
-    return (<Container>
-        <StyledJupyterIcon/>
-        <Title/>
-        {form}
-        <Link href="/register" passHref>
-            <StyledLink>注册</StyledLink>
-        </Link>
-    </Container>);
+    return (
+        <Container>
+            <StyledJupyterIcon/>
+            <Title/>
+            {form}
+            <StyledLink href="/register">注册</StyledLink>
+        </Container>
+    );
 
 }

@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import Link from "next/link";
 
-const StyledLink = styled.a`
+const StyledA = styled.a`
   margin: 25px 0 0 0;
   width: 100%;
   display: block;
@@ -24,4 +25,12 @@ const StyledLink = styled.a`
   }
 `
 
-export default StyledLink;
+export default function StyledLink({href, children}) {
+    return (
+        <Link href={href} passHref>
+            <StyledA>
+                {children}
+            </StyledA>
+        </Link>
+    )
+};
