@@ -12,4 +12,3 @@ dependencies:
   - python-jose[cryptography]
   - passlib[bcrypt]
   - dockerspawner
-  - jupyter_client
