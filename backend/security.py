@@ -26,6 +26,14 @@ def decode_token(token):
     return jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
 
 
+def validate_token(token):
+    try:
+        decode_token(token)
+    except:
+        return False
+    return True
+
+
 def create_access_token(data: dict, expires_delta: timedelta | None = None):
     to_encode = data.copy()
     if expires_delta:

@@ -1,10 +1,11 @@
 from jose import JWTError
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Request
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
 from starlette import status
+from urllib.parse import parse_qs, urlparse
 
-from .security import decode_token, create_access_token, verify_password, validate_password_strength
+from .security import decode_token, create_access_token, verify_password, validate_password_strength, validate_token
 from .schemas import User, RegisterInfo, TokenData
 from .db import get_db, get_user_by_username, create_user
 from .config import invite_codes, HUB_CLIENT_ID, HUB_CLIENT_SECRET
@@ -67,6 +68,18 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = 
         )
     access_token = create_access_token({"sub": user.username})
     return {"access_token": access_token, "token_type": "bearer"}
+
+
+@router.post("/token")
+async def token(data: Request):
+    body = await data.body()
+    body = b"http://nothing?" + body
+    qs = parse_qs(urlparse(body).query)
+    code = qs.get(b"code", [None])
+    code = code[0].decode("utf-8") if len(code) > 0 else None
+    if not validate_token(code):
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid token")
+    return {"access_token": code, "token_type": "bearer"}
 
 
 @router.post("/user-register/", response_model=User)
