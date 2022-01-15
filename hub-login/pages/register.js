@@ -60,9 +60,9 @@ export default function Register() {
                             helpers.setFieldError('username', '休息一下吧，您的注册请求过于频繁');
                         } else if (err?.response?.status === 418) {
                             helpers.setFieldError('invite_code', '无效的邀请码，不知道的话就别乱试了，你试不出来的，嘿嘿 (╯°□°）╯︵ ┻━┻');
-                        } else if (err?.response?.data?.detail){
+                        } else if (err?.response?.data?.detail) {
                             const detail = err.response.data.detail;
-                            if (typeof detail==='string')
+                            if (typeof detail === 'string')
                                 helpers.setFieldError('username', detail);
                         } else {
                             helpers.setFieldError('username', '我们这边出现了一些问题，请联系网站管理员');
