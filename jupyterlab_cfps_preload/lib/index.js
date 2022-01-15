@@ -4,22 +4,16 @@ module.exports = [
     {
         id: 'jupyterlab_cfps_preload',
         autoStart: true,
-        activate: function (app) {
+        activate: async function (app) {
             console.log(
                 'JupyterLab extension jupyterlab_cfps_preload is activated!'
             );
-            new Promise(async function (resolve, reject) {
-                    let counter = 5;
-                    while (counter-- > 0) {
-                        if (await loadEcharts()) {
-                            resolve();
-                            return;
-                        } else console.log("Retrying...");
-                    }
-                    reject();
-                }
-            ).then(() => {
-            })
+            let counter = 5;
+            while (counter --> 0) {
+                if (await loadEcharts()) {
+                    return;
+                } else console.log("Retrying...");
+            }
 
             console.log(app.commands);
         }
