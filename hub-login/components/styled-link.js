@@ -27,10 +27,8 @@ const StyledA = styled.a`
 
 export default function StyledLink({href, children}) {
     return (
-        <Link href={href} passHref>
-            <StyledA>
-                {children}
-            </StyledA>
-        </Link>
+        <StyledA onClick={() => window.location.href = href + window.location.search}>
+            {children}
+        </StyledA>
     )
 };
