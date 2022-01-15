@@ -7,7 +7,7 @@ from urllib.parse import parse_qs, urlparse
 
 from .security import decode_token, create_access_token, verify_password, validate_password_strength, validate_token
 from .schemas import User, RegisterInfo, TokenData
-from .db import get_db, get_user_by_username, create_user
+from .db import get_db, get_user_by_username, create_user, DBUser
 from .config import invite_codes, HUB_CLIENT_ID, HUB_CLIENT_SECRET
 
 router = APIRouter()
@@ -96,5 +96,5 @@ async def register(form_data: RegisterInfo, db: Session = Depends(get_db)):
 
 
 @router.get("/user-data")
-async def read_users_me(current_user: User = Depends(get_current_user)):
-    return current_user
+async def user_data(current_user: DBUser = Depends(get_current_user)):
+    return {"username": current_user.username, "is_active": current_user.is_active}
