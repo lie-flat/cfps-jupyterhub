@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledTitle = styled.div`
-font-size: 25px;
+font-size: 24px;
 font-weight: 600;
 margin-bottom: 35px;
 color: #000;

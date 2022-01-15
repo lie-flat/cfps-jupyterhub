@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 import {Form, Formik, Field, ErrorMessage} from "formik";
 import Container from "../components/container";
 import Title from "../components/title";
@@ -60,12 +59,9 @@ export default function Login() {
     );
 
     return (
-        <Container>
-            <StyledJupyterIcon/>
-            <Title/>
-            {form}
+        <FormLayout form={form}>
             <StyledLink href="/register">注册</StyledLink>
-        </Container>
+        </FormLayout>
     );
 
 }
