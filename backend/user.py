@@ -4,6 +4,7 @@ from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
 from starlette import status
 from urllib.parse import parse_qs, urlparse
+import re
 
 from .security import decode_token, create_access_token, verify_password, validate_password_strength, validate_token
 from .schemas import User, RegisterInfo, TokenData
@@ -85,16 +86,24 @@ async def token(data: Request):
     return {"access_token": code, "token_type": "bearer"}
 
 
+def validate_username(username: str):
+    if re.match(r'^[a-zA-Z0-9_]{4,16}$', username):
+        return True
+    return False
+
+
 @router.post("/user-register/", response_model=User)
 async def register(form_data: RegisterInfo, db: Session = Depends(get_db)):
     if form_data.invite_code not in INVITE_CODES:
         raise HTTPException(status_code=status.HTTP_418_IM_A_TEAPOT, detail="邀请码无效")
+    if not validate_username(form_data.username):
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="用户名无效")
     if not validate_password_strength(form_data.password):
-        raise HTTPException(status_code=400, detail="你的密码太弱了")
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="你的密码太弱了")
     try:
         user = create_user(db, form_data)
     except:
-        raise HTTPException(status_code=400, detail="用户已存在")
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="用户已存在")
     return User(username=user.username)
 
 
