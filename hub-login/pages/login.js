@@ -21,7 +21,7 @@ export default function Login() {
                     formData.append('username', values.username);
                     formData.append('password', values.password);
                     let params = getParams();
-                    let r = axios.post('/api/user-login', formData)
+                    let r = axios.post('/api/user-login/', formData)
                     r.then(res => {
                         let redirect_uri = params.get('redirect_uri');
                         if (redirect_uri) {
