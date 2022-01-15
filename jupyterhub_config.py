@@ -46,4 +46,17 @@ c.GenericOAuthenticator.token_url = f'http://127.0.0.1:{port}/token'
 c.GenericOAuthenticator.authorize_url = '/login'
 c.GenericOAuthenticator.username_key = 'username'
 
-c.Spawner.environment = {'LANG': 'zh_CN.utf8'}
+DATABASE_PORT = os.environ.get('DATABASE_PORT', '3306')
+DATABASE_USER = os.environ.get('DATABASE_USER', 'jupyterhub')
+DATABASE_PASSWORD = os.environ.get('DATABASE_PASSWORD', 'SUPER-secret_PlavsW0r1d')
+DATABASE_NAME = os.environ.get('DATABASE_NAME', 'cfps')
+
+c.Spawner.environment = {
+    'LANG': 'zh_CN.utf8',
+    'DATABASE_HOST': DOCKER_INTERFACE_IP,
+    'DATABASE_PORT': DATABASE_PORT,
+    'DATABASE_USER': DATABASE_USER,
+    'DATABASE_PASSWORD': DATABASE_PASSWORD,
+    'DATABASE_NAME': DATABASE_NAME,
+    'CFPS_SHELL_DATA_ROOT': '/home/jovyan/data/cfps-analyze/',
+}
