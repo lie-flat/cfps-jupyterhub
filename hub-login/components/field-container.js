@@ -6,6 +6,7 @@ height: 50px;
 width: 100%;
 display: flex;
 position: relative;
+margin-top: 20px;
 & input {
   height: 100%;
   width: 100%;
@@ -23,9 +24,7 @@ position: relative;
   box-shadow: inset 2px 2px 5px #babecc,
               inset -1px -1px 2px #ffffff73;
 }
-&:nth-child(2){
-  margin-top: 20px;
-}
+
 & svg {
   position: absolute;
   left: 13px;
