@@ -27,6 +27,9 @@ export default function Login() {
                         if (redirect_uri) {
                             redirect_uri += '?code=' + res.data.access_token + '&state=' + params.get('state');
                             window.location.href = redirect_uri;
+                        } else {
+                            alert("不知道您想要登录什么应用程序，即将重定向到首页，要访问 JupyterHub, 请从主页访问。");
+                            window.location.href = '/';
                         }
                     }).catch(err => {
                         if (err?.response?.data?.detail) {
