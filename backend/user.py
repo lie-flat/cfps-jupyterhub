@@ -76,7 +76,10 @@ async def token(data: Request):
     body = b"http://nothing?" + body  # Make the URL Parser happy
     qs = parse_qs(urlparse(body).query)
     code = qs.get(b"code", [None])
-    code = code[0].decode("utf-8") if len(code) > 0 else None
+    if code[0] is not None:
+        code = code[0].decode("utf-8") if len(code) > 0 else None
+    else:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Missing code")
     if not validate_token(code):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid token")
     return {"access_token": code, "token_type": "bearer"}
