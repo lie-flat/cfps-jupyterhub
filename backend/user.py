@@ -73,7 +73,7 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = 
 @router.post("/token")
 async def token(data: Request):
     body = await data.body()
-    body = b"http://nothing?" + body
+    body = b"http://nothing?" + body  # Make the URL Parser happy
     qs = parse_qs(urlparse(body).query)
     code = qs.get(b"code", [None])
     code = code[0].decode("utf-8") if len(code) > 0 else None
