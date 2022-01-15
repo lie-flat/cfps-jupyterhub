@@ -33,12 +33,18 @@ export default function Login() {
                         }
                     }).catch(err => {
                         if (err?.response?.data?.detail) {
-                            helpers.setFieldError('username', err.response.data.detail);
+                            const detail = err.response.data.detail;
+                            // helpers.resetForm();
+                            if (typeof detail == "string") {
+                                helpers.setFieldError('username', detail);
+                            } else {
+                                helpers.setFieldError('username', "请输入用户名和密码！");
+                            }
                         } else {
                             helpers.setFieldError('username', '我们这边出现了一些问题，请联系网站管理员');
                         }
+                        helpers.setSubmitting(false);
                     });
-                    helpers.setSubmitting(false);
                 }}>
             {({isSubmitting}) => (<Form>
                 <FieldContainer>
@@ -48,7 +54,7 @@ export default function Login() {
                 <StyledErrorMessage name="username" component="div"/>
                 <FieldContainer>
                     <PasswordIcon/>
-                    <Field type="password" name="password" placeholder="请输入密码"/>
+                    <Field type="password" name="password" placeholder="请输入密码" required/>
                 </FieldContainer>
                 <StyledErrorMessage name="password" component="div"/>
                 <StyledButton type="submit" disabled={isSubmitting}>
