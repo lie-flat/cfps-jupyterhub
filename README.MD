@@ -15,6 +15,7 @@ Shandong University (Weihai)
 ```bash
 conda env create -f environment.yml
 conda activate cfps
+pip install -r requirements.txt
 ```
 
 ## 系统配置
