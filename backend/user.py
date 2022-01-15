@@ -8,7 +8,7 @@ from urllib.parse import parse_qs, urlparse
 from .security import decode_token, create_access_token, verify_password, validate_password_strength, validate_token
 from .schemas import User, RegisterInfo, TokenData
 from .db import get_db, get_user_by_username, create_user, DBUser
-from .config import invite_codes, HUB_CLIENT_ID, HUB_CLIENT_SECRET
+from .config import INVITE_CODES, HUB_CLIENT_ID, HUB_CLIENT_SECRET
 
 router = APIRouter()
 
@@ -87,7 +87,7 @@ async def token(data: Request):
 
 @router.post("/user-register/", response_model=User)
 async def register(form_data: RegisterInfo, db: Session = Depends(get_db)):
-    if form_data.invite_code not in invite_codes:
+    if form_data.invite_code not in INVITE_CODES:
         raise HTTPException(status_code=status.HTTP_418_IM_A_TEAPOT, detail="邀请码无效")
     if not validate_password_strength(form_data.password):
         raise HTTPException(status_code=400, detail="你的密码太弱了")

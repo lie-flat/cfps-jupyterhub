@@ -1,15 +1,13 @@
-from backend.config import port
+from backend.config import port, APP_PROFILE, DOMAIN_NAME
 import pathlib
 import sys
 
 root = pathlib.Path(__file__).parent.resolve()
 
-DOMAIN_NAME = "hub.kxxt.tech"
-
 if len(sys.argv) > 1:
     mode = sys.argv[1]
 else:
-    mode = "dev"
+    mode = APP_PROFILE
 
 with open(f"{mode}.template.conf", "r", encoding='utf-8') as f:
     template = f.read()

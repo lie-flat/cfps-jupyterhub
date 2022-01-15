@@ -17,9 +17,11 @@ c.JupyterHub.spawner_class = 'dockerspawner.DockerSpawner'
 
 c.JupyterHub.bind_url = 'http://127.0.0.1:8000/jupyter'  # 因为有 nginx, 所以代理只监听 127.0.0.1:8000 即可
 
-c.JupyterHub.hub_ip = '172.17.0.1'  # 设置为 Docker 虚拟网卡的 IP
-c.DockerSpawner.hub_ip_connect = '172.17.0.1'
-c.DockerSpawner.hub_connect_url = "http://172.17.0.1:8081/"
+DOCKER_INTERFACE_IP = os.environ.get('DOCKER_INTERFACE_IP', '172.17.0.1')
+
+c.JupyterHub.hub_ip = DOCKER_INTERFACE_IP  # 设置为 Docker 虚拟网卡的 IP
+c.DockerSpawner.hub_ip_connect = DOCKER_INTERFACE_IP
+c.DockerSpawner.hub_connect_url = f"http://{DOCKER_INTERFACE_IP}:8081/"
 print(c.JupyterHub.hub_ip)
 
 notebook_dir = os.environ.get(

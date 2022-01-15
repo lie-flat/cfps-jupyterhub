@@ -18,6 +18,22 @@ conda activate cfps
 pip install -r requirements.txt
 ```
 
+## 应用程序配置
+
+编辑 `.env` 文件，写入需要配置的环境变量
+
+```bash
+INVITE_CODES=邀请码，用;隔开
+API_RATE_LIMIT=API调用频率上限，比如"30/minute"
+API_SECRET_KEY=后端密钥
+API_HUB_CLIENT_ID=JupyterHub客户端ID
+API_HUB_CLIENT_SECRET=JupyterHub客户端密钥
+DOMAIN_NAME=部署域名
+DOCKER_INTERFACE_IP=Docker 网卡 IP
+```
+
+然后运行 `source load_env_vars.sh` 将 `.env` 文件中的环境变量加载到当前 shell 中
+
 ## 系统配置
 
 （假设你所使用的系统用户已在 `docker` 组中，如果没有，请运行：`sudo usermod -aG docker $USER`） 提前下载好我制作的容器镜像
@@ -33,8 +49,6 @@ iptables -A INPUT -i docker0 -p tcp -m tcp --dport 8081 -j ACCEPT
 ```
 
 生成 Nginx 配置
-
-修改 `generate_nginx_conf.py` 中的 `DOMAIN_NAME`，改为你要部署的域名。
 
 ```bash
 conda activate cfps
@@ -76,4 +90,3 @@ Successfully deployed certificate for hub.kxxt.tech to /etc/nginx/sites-enabled/
 Congratulations! You have successfully enabled HTTPS on https://hub.kxxt.tech
 ```
 
-##  
