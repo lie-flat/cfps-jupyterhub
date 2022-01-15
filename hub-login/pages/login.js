@@ -31,7 +31,6 @@ export default function Login() {
                     }).catch(err => {
                         if (err?.response?.data?.detail) {
                             const detail = err.response.data.detail;
-                            // helpers.resetForm();
                             if (typeof detail == "string") {
                                 helpers.setFieldError('username', detail);
                             } else {
@@ -55,7 +54,7 @@ export default function Login() {
                 </FieldContainer>
                 <StyledErrorMessage name="password" component="div"/>
                 <StyledButton type="submit" disabled={isSubmitting}>
-                    注册
+                    登录
                 </StyledButton>
             </Form>)}
         </Formik>
