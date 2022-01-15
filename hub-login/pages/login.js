@@ -1,12 +1,9 @@
 import React from 'react';
-import {Form, Formik, Field, ErrorMessage} from "formik";
-import Container from "../components/container";
-import Title from "../components/title";
+import {Form, Formik, Field} from "formik";
 import FieldContainer from "../components/field-container";
 import StyledButton from "../components/styled-button";
 import StyledLink from "../components/styled-link";
 import StyledErrorMessage from "../components/styled-error-message";
-import StyledJupyterIcon from "../components/jupyter-icon";
 import axios from "axios";
 import UserIcon from "../components/user-icon";
 import PasswordIcon from "../components/password-icon";
@@ -58,7 +55,7 @@ export default function Login() {
                 </FieldContainer>
                 <StyledErrorMessage name="password" component="div"/>
                 <StyledButton type="submit" disabled={isSubmitting}>
-                    登录
+                    注册
                 </StyledButton>
             </Form>)}
         </Formik>
@@ -66,7 +63,7 @@ export default function Login() {
 
     return (
         <FormLayout form={form}>
-            <StyledLink href="/register">注册</StyledLink>
+            <StyledLink href="/register">没有帐号？点此注册</StyledLink>
         </FormLayout>
     );
 
