@@ -88,7 +88,7 @@ async def token(data: Request):
 @router.post("/user-register/", response_model=User)
 async def register(form_data: RegisterInfo, db: Session = Depends(get_db)):
     if form_data.invite_code not in invite_codes:
-        raise HTTPException(status_code=400, detail="邀请码无效")
+        raise HTTPException(status_code=status.HTTP_418_IM_A_TEAPOT, detail="邀请码无效")
     if not validate_password_strength(form_data.password):
         raise HTTPException(status_code=400, detail="你的密码太弱了")
     try:
