@@ -169,6 +169,21 @@ Successfully deployed certificate for hub.kxxt.tech to /etc/nginx/sites-enabled/
 Congratulations! You have successfully enabled HTTPS on https://hub.kxxt.tech
 ```
 
+## 数据库配置
+
+假设你已经根据大作业的第一部分将数据导入了 MySQL, MySQL 运行在同一台服务器上。
+
+为 JupyterHub 的用户创建一个数据库账户
+
+```bash
+sudo mysql
+# 下面的 172.17.0.% 为 Docker 容器在 Docker 网卡上的 IP, 请根据实际情况设置
+CREATE USER 'jupyterhub'@'172.17.0.%' IDENTIFIED BY 'SUPER-secret_PlavsW0r1d';
+# 授予在 cfps 数据库上的 SELECT 权限（只读，防止用户篡改数据）
+GRANT SELECT ON cfps.* TO 'jupyterhub'@'172.17.0.%';
+FLUSH PRIVILEGES;
+```
+
 ## 启动应用程序
 
 ### 调试模式和生产模式
