@@ -7,3 +7,4 @@ matplotlib
 PyMySQL
 tqdm
 pyecharts
+jupyterlab_cfps_preload

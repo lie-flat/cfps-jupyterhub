@@ -14,6 +14,11 @@ RUN apt-get update --yes && \
     apt-get install --yes --no-install-recommends ffmpeg dvipng cm-super && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
+RUN mkdir /etc/ipython
+
+COPY startup.py /opt/startup.py
+COPY ipython_config.py /etc/ipython/ipython_config.py
+
 USER ${NB_UID}
 
 # Install Python 3 packages
@@ -71,6 +76,7 @@ RUN mkdir "/home/${NB_USER}/data" && \
     fix-permissions "/home/${NB_USER}/data" && \
     mkdir "/home/${NB_USER}/team-shared" && \
     fix-permissions "/home/${NB_USER}/team-shared"
+
 
 USER ${NB_UID}
 
