@@ -2,11 +2,38 @@
 
 Shandong University (Weihai)
 
-山东大学（威海）数据科学与人工智能实验班 （2020级） 
+山东大学（威海）数据科学与人工智能实验班 （2020级）
 
 2021 年秋 - 2022 年春 前端开发和数据库课程 大作业 第三部分
 
 选题：JupyterHub
+
+## 前言
+
+根据 《山东大学学生违纪处分实施细则》分则
+
+**第三十条** 违反学术纪律的，依照学校学术纪律处分规定予以处理。
+
+根据 《 [山东大学学术纪律处分规定](https://www.rd.sdu.edu.cn/info/1675/8558.htm) 》 
+
+**第一章 总则** 
+
+**第二条**　本规定适用于所有以山东大学为作者单位发表（布）作品的人员，包括山东大学的教职工（以下简称“教师”）和学生,以及在山东大学学习、工作的访问学者、进修教师及兼职人员等。
+
+**第二章 学术纪律** 
+
+**第六条**　学生有下列行为之一的，可认定为违反山东大学学术纪律。
+（一）第五条第（一）、（二）、（三）、（四）、（五）、（七）、（八）、（九）项所列行为。
+
+**第五条（一）** 抄袭他人作品；与他人作品实质相似；在公开发表的作品中，使用他人成果不加注明。
+
+**第三章 纪律处分**
+
+**第八条**　违反学术纪律的学生，应当承担相应责任。
+
+（一）有第五条第（一）、（二）、（三）、（四）项行为之一的，依情节轻重，给予记过、留校察看直至开除学籍处分。
+
+请各位数科班同学不要抄袭大作业
 
 ## 安装
 
@@ -62,10 +89,10 @@ docker volume create --driver local -o o=bind -o type=none -o device="/home/$USE
 
 根据相关保密要求，我们不能提供 CFPS 数据集文件，请从官方渠道申请并下载。
 
-此 Repo 的 `cfps_dvapis` 文件夹也应该被复制到 `/home/$USER/data` 中
+此 Repo 的 `cfps_dvapis` 文件夹也应该被复制到 `/home/$USER/jupyterhub-data/data` 中
 
 ```
-/home/$USER/data
+/home/$USER/jupyterhub-data/data
 ├── cfps-analyze
 │   ├── dataset
 │   ├── process
@@ -78,7 +105,6 @@ docker volume create --driver local -o o=bind -o type=none -o device="/home/$USE
 │   └── requirements.txt
 ├── cfps_dvapis
 ```
-
 
 ## 系统配置
 
@@ -143,3 +169,113 @@ Successfully deployed certificate for hub.kxxt.tech to /etc/nginx/sites-enabled/
 Congratulations! You have successfully enabled HTTPS on https://hub.kxxt.tech
 ```
 
+## 启动应用程序
+
+### 调试模式和生产模式
+
+在调试模式下，程序会因为源代码文件的改动而自动重新加载，比较适合开发时使用。
+
+编辑 `.env` 文件， 将 `APP_PROFILE` 改为 `dev` 或 `prod`
+
+我们推荐您使用 `tmux` 来管理会话 (`sudo apt install tmux`)
+
+~~当然你用 `screen` 也可以~~。
+
+![tmux](assets/tmux.png)
+
+新开一个 tmux 会话，分成三块 pane：
+
+```bash
+tmux
+```
+
+然后按下组合键
+
+```
+C-b %  # 水平分屏
+C-b "  # 垂直分屏
+```
+
+> 这里 `C-b %` 指先按下 <kbd>Ctrl</kbd> + <kbd>B</kbd>, 然后输入 % （即按下 <kbd>Shift</kbd> + <kbd>5</kbd>）
+> 本文出现的其他的按键组合同理
+
+在三个 pane 中都执行如下操作, 方法如下
+
+```bash
+C-b :
+setw synchronize-panes on # 此处有 Tab 补全，不用傻傻的一个字一个字的敲。。。
+```
+
+然后执行
+
+```bash
+cd cfps-jupyterhub  # 进入到此 Repo 的目录
+conda activate cfps  # 激活 conda 环境
+source load_env_vars.sh  # 加载环境变量
+```
+
+然后退出同步执行模式：
+
+```bash
+C-b :
+setw synchronize-panes off # 此处有 Tab 补全，不用傻傻的一个字一个字的敲。。。
+```
+
+重新生成 Nginx 配置文件并部署
+
+```
+python generate_nginx_conf.py
+sudo rm /etc/nginx/sites-available/hub.kxxt.tech.conf
+sudo cp hub.kxxt.tech.conf /etc/nginx/sites-available/hub.kxxt.tech.conf
+sudo systemctl reload nginx
+```
+
+然后重新配置 SSL, 选 1, 重新安装即可，无需 Renew
+
+```bash
+sudo certbot
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -              
+1: Attempt to reinstall this existing certificate                                            
+2: Renew & replace the certificate (may be subject to CA rate limits)                        
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -              
+Select the appropriate number [1-2] then [enter] (press 'c' to cancel): 1                    
+Deploying certificate
+Successfully deployed certificate for hub.kxxt.tech to /etc/nginx/sites-enabled/hub.kxxt.tech.conf
+Congratulations! You have successfully enabled HTTPS on https://hub.kxxt.tech                
+```
+
+然后运行 JupyterHub, 把日志保存在 `jupyterhub.log`
+
+```bash
+jupyterhub -f jupyterhub_config.py &> jupyterhub.log
+```
+
+然后切换到另一个 pane (<kbd>Ctrl</kbd> + <kbd>B</kbd>, 然后按方向键)
+
+运行后端服务, 把日志输出到 `backend.log`：
+
+```bash
+python server.py &> backend.log
+```
+
+然后切换到最后一个 pane，配置一下前端：
+
+如果是调试模式，就启动 Next.js Server：
+
+```bash
+cd hub-login
+yarn dev
+```
+
+如果是生产模式，把静态网站构建出来就可以了
+
+```bash
+cd hub-login
+yarn build
+```
+
+好了，现在整个程序应该都跑起来了！
+
+按下 <kbd>Ctrl</kbd> + <kbd>B</kbd> , 然后按下 <kbd>d</kbd>, 可以与当前的 tmux 会话分离
+
+使用 `tmux attach` 命令可以重新进入原来的 tmux 会话
