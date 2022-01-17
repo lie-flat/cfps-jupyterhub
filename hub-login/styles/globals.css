@@ -29,3 +29,7 @@ body{
 html {
   scroll-behavior: smooth;
 }
+
+#__next {
+  width: 100%;
+}
