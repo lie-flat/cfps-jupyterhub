@@ -12,6 +12,7 @@ const StyledA = styled.a`
   font-weight: 600;
   background: #dde1e7;
   border: none;
+  text-align: center;
   outline: none;
   cursor: pointer;
   border-radius: 25px;
