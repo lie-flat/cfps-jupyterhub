@@ -5,20 +5,19 @@ import {faBilibili, faGithub} from "@fortawesome/free-brands-svg-icons";
 import {faPlay} from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 
-const IntroText = styled.p`
+const HeadingWithMargin = styled(Heading)`
   margin-top: 1em;
 `
 
 const ThinButton = styled(Button)`
-  width: 7em;
+  width: 8em;
 `
 
-export default function Head() {
+export default function FootSlide() {
     return (
         <SpaceTraveling>
-            <Heading renderAs='h1' size={1}>CFPS JupyterHub</Heading>
-            <Heading renderAs='h2' size={4}>山东大学 (威海) 数据科学与人工智能实验班</Heading>
-            <Heading renderAs='h2' size={5}>前端开发和数据库课程大作业</Heading>
+            <Heading renderAs='h4' size={1}>心动不如行动</Heading>
+            <Heading renderAs='h5' size={4}>不妨现在就去试试？</Heading>
             <Button.Group>
                 <ThinButton color='warning' renderAs='a' href="https://github.com/lie-flat/cfps-jupyterhub">
                     <IconText size="sm" icon={faGithub}>Github</IconText>
@@ -28,9 +27,13 @@ export default function Head() {
                 </ThinButton>
             </Button.Group>
             <Button color='primary' renderAs='a' href="/jupyter" style={{width: '10em'}}>
-                <IconText size='sm' icon={faPlay}>立即试用</IconText>
+                <IconText size="sm" icon={faPlay}>立即试用</IconText>
             </Button>
-            <IntroText>还没想好？下滑查看介绍</IntroText>
+            <HeadingWithMargin renderAs='h5' size={4}>友情链接</HeadingWithMargin>
+            <Button.Group>
+                <ThinButton color='info' renderAs='a' href="https://www.isss.pku.edu.cn/cfps/">CFPS 官网</ThinButton>
+                <ThinButton color='success' renderAs='a' href="https://www.isss.pku.edu.cn/cfps/">kxxt 的个人网站</ThinButton>
+            </Button.Group>
         </SpaceTraveling>
     )
 }
