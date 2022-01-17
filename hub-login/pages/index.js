@@ -102,7 +102,7 @@ export default function Home() {
                                               hsl(165deg 100% 56%) 62%,
                                               hsl(175deg 100% 55%) 99%
                                             '>
-                        <LazyImage width={360} src="/pictures/ootb.jpg" alt="开箱即用"/>
+                        <LazyImage width={250} src="/pictures/ootb.jpg" alt="开箱即用"/>
                         <SimpleMessage color='light' icon={faBoxOpen} title="开箱即用">
                             我们为 Jupyter Lab 编写插件，并且进行了深入的设置，使 Jupyter Lab 开箱即用。<br/>
                             你再也不需要在每一个笔记本的开头都 <code>import</code> 一大堆库了。<br/>
