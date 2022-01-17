@@ -1,5 +1,7 @@
 import {FullPage, Slide} from 'react-full-page';
 import Head from '../components/slides/head';
+import 'bulma/css/bulma.min.css';
+
 
 export default function Home() {
   return (
