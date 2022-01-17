@@ -7,7 +7,7 @@ const SlideLayout = ({
                          direction = '-45deg',
                          gradients = '#ee7752, #e73c7e, #23a6d5, #23d5ab'
                      }) => {
-    const imageColumn = <Columns.Column className={styles.imageColumn} key={0}>{children[0]}</Columns.Column>
+    const imageColumn = <Columns.Column key={0}>{children[0]}</Columns.Column>
     const contentColumn = <Columns.Column key={1}>{children[1]}</Columns.Column>
     return (
         <div className={styles.background} style={{backgroundImage: `linear-gradient(${direction}, ${gradients})`}}>

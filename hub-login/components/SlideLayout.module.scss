@@ -23,17 +23,19 @@
   height: 100%;
   align-items: center;
   margin: 0;
-}
-
-.imageColumn {
-  display: flex;
-  justify-content: center;
+  & :global(.column) {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 @include mixins.mobile {
   .slideLayout {
     & :global(.column) {
       width: 100%;
+      & article {
+        max-width: 80%;
+      }
     }
 
     width: 100%;
