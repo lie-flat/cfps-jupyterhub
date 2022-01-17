@@ -32,7 +32,7 @@ export default function FootSlide() {
             <HeadingWithMargin renderAs='h5' size={4}>友情链接</HeadingWithMargin>
             <Button.Group>
                 <ThinButton color='info' renderAs='a' href="https://www.isss.pku.edu.cn/cfps/">CFPS 官网</ThinButton>
-                <ThinButton color='success' renderAs='a' href="https://www.isss.pku.edu.cn/cfps/">kxxt 的个人网站</ThinButton>
+                <ThinButton color='success' renderAs='a' href="https://kxxt.vercel.app">kxxt 的个人网站</ThinButton>
             </Button.Group>
         </SpaceTraveling>
     )
