@@ -9,11 +9,11 @@ const RoundedImageContainer = styled.div`
   margin-top: -100px;
   margin-bottom: 20px;
   border-radius: 50px;
-  box-shadow: 
-              0px 0px 2px #5f5f5f,
+  box-shadow: 0px 0px 2px #5f5f5f,
               0px 0px 0px 5px #ecf0f3,
               8px 8px 15px #a7aaaf,
-              -8px -8px 15px #ffffff;
+             -8px -8px 15px #ffffff;
+
   & img {
     width: 100%;
     height: 100%;

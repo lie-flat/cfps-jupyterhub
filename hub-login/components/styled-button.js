@@ -13,11 +13,12 @@ const StyledButton = styled.button`
   cursor: pointer;
   border-radius: 25px;
   box-shadow: 2px 2px 5px #babecc,
-              -5px -5px 10px #ffffff73;
+    -5px -5px 10px #ffffff73;
+
   &:focus {
     color: #3498db;
     box-shadow: inset 2px 2px 5px #babecc,
-                inset -5px -5px 10px #ffffff73;
+      inset -5px -5px 10px #ffffff73;
   }
 `
 
