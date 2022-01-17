@@ -36,3 +36,8 @@ html {
 .icon-text {
   align-items: center!important;
 }
+
+.button .icon {
+  margin-left: 0!important;
+  margin-right: .25em!important;
+}
