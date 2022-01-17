@@ -1,6 +1,9 @@
 // Reference: https://github.com/chokcoco/iCSS/issues/148
 //            https://codepen.io/Chokcoco/pen/NWvYOqW
 
+
+@use "sass:math";
+
 .rootContainer {
   background-color: black;
   display: flex;
@@ -87,14 +90,13 @@
   @return rgb(randomNum(255), randomNum(255), randomNum(255));
 }
 
+
 @function shadowSet($maxWidth, $maxHeight, $count) {
   $shadow: 0 0 0 0 randomColor();
 
   @for $i from 0 through $count {
-    $x: #{random(10000) / 10000 * $maxWidth};
-    $y: #{random(10000) / 10000 * $maxHeight};
-
-
+    $x: #{math.div(random(10000), 10000) * $maxWidth};
+    $y: #{math.div(random(10000), 10000) * $maxHeight};
     $shadow: $shadow, #{$x} #{$y} 0 #{random(5)}px randomColor();
   }
 
