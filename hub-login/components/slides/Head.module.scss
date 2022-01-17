@@ -1,18 +1,21 @@
 // Reference: https://github.com/chokcoco/iCSS/issues/148
 //            https://codepen.io/Chokcoco/pen/NWvYOqW
 
-
 @use "sass:math";
 
 .rootContainer {
   background-color: black;
-  display: flex;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
   overflow: hidden;
 }
 
 .container {
+  display: flex;
+  grid-area: 1/1/2/2;
   position: relative;
   background: green;
   perspective: 4px;
@@ -138,4 +141,18 @@
 
 .itemMiddle {
   transform: rotateX(180deg) translateZ(50px);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  grid-area: 1/1/2/2;
+  margin: auto !important;
+  height: min-content;
+  z-index: 1;
+
+  & h1, h2, p {
+    color: white;
+  }
 }

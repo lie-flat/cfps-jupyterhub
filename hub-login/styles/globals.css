@@ -33,3 +33,7 @@ html {
 #__next {
   width: 100%;
 }
+
+.icon-text {
+  align-items: center!important;
+}
