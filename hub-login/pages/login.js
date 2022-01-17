@@ -8,6 +8,7 @@ import axios from "axios";
 import UserIcon from "../components/user-icon";
 import PasswordIcon from "../components/password-icon";
 import FormLayout from "../components/form-layout";
+import Head from "next/head";
 
 const getParams = () => {
     return new URLSearchParams(window.location.search);
@@ -65,6 +66,9 @@ export default function Login() {
 
     return (
         <FormLayout form={form}>
+            <Head>
+                <title>登录</title>
+            </Head>
             <StyledLink href="/register">没有帐号？点此注册</StyledLink>
         </FormLayout>
     );

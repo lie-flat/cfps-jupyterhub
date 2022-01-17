@@ -9,6 +9,7 @@ import UserIcon from "../components/user-icon";
 import PasswordIcon from "../components/password-icon";
 import InviteCodeIcon from "../components/invite-code-icon";
 import FormLayout from "../components/form-layout";
+import Head from "next/head";
 
 import {removeEmptyValues} from "../utils";
 
@@ -102,6 +103,9 @@ export default function Register() {
 
     return (
         <FormLayout form={form}>
+            <Head>
+                <title>注册</title>
+            </Head>
             <StyledLink href="/login">已有帐号？点此登录</StyledLink>
         </FormLayout>
     );
