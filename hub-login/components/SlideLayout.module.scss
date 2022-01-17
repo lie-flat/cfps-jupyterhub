@@ -1,0 +1,59 @@
+@use "~bulma/sass/utilities/mixins";
+
+@keyframes backgroundGradient {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+.background {
+  height: 100%;
+  animation: backgroundGradient 10s ease infinite;
+  background-size: 300% 300%;
+}
+
+.slideLayout {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  margin: 0;
+}
+
+.imageColumn {
+  display: flex;
+  justify-content: center;
+}
+
+@include mixins.mobile {
+  .slideLayout {
+    & :global(.column) {
+      width: 100%;
+    }
+
+    width: 100%;
+    height: min-content;
+  }
+}
+
+@include mixins.mobile {
+  .columnReverse {
+    flex-direction: column-reverse;
+  }
+
+  .columnNormal {
+    flex-direction: column;
+  }
+}
+
+.slideLayoutContainer {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
