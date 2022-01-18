@@ -30,7 +30,7 @@ export default function Home() {
                 </Slide>
                 <Slide>
                     <SlideLayout direction="-45deg" gradients='#ee7752, #e73c7e, #23a6d5, #23d5ab' imagePosition='left'>
-                        <LazyImage width={360} src="/pictures/cfps.gif" alt="CFPS（China Family Panel Studies）"/>
+                        <LazyImage width={360} height={112.717} src="/pictures/cfps.gif" alt="CFPS（China Family Panel Studies）"/>
                         <SimpleMessage color='info' icon={faStar} title="基于 CFPS 数据的多人大数据分析平台">
                             我们使用 JupyterHub 和 JupyterLab 搭建了一个多人大数据分析平台，可以供一个团队对 CFPS 数据集进行在线的数据分析和可视化。<br/>
                             中国家庭追踪调查（China Family Panel
@@ -51,7 +51,7 @@ export default function Home() {
                                               hsl(36deg 100% 47%) 89%,
                                               hsl(55deg 100% 50%) 100%
                                             '>
-                        <LazyImage width={400} src="/pictures/jupyterlab.png" alt="Project Jupyter"/>
+                        <LazyImage width={400} height={202.283} src="/pictures/jupyterlab.png" alt="Project Jupyter"/>
                         <SimpleMessage color='link' icon={faStickyNote} title="我们使用了 Jupyter Lab 而非 Jupyter Notebook">
                             相比于 Jupyter Notebook, JupyterLab 更加安全，也提供了更多的功能。 <br/>
                             根据官方的<a href='https://github.com/jupyter/docker-stacks/issues/1217'>公告</a>，Jupyter Notebook
@@ -77,7 +77,7 @@ export default function Home() {
                                             hsl(121deg 100% 82%) 92%,
                                             hsl(111deg 100% 87%) 100%
                                             '>
-                        <LazyImage width={400} src="/pictures/docker.png" alt="Docker"/>
+                        <LazyImage width={400} height={296.45} src="/pictures/docker.png" alt="Docker"/>
                         <SimpleMessage color='warning' icon={faDocker} title="使用 Docker 容器">
                             每一个用户的 Jupyter Lab 实例都运行在一个单独的 Docker 容器中。<br/>
                             我们使用 Docker 容器保证了宿主机与用户之间的隔离，还有各个用户之间的隔离，大幅度的提升了系统的安全性。<br/>
@@ -102,7 +102,7 @@ export default function Home() {
                                               hsl(165deg 100% 56%) 62%,
                                               hsl(175deg 100% 55%) 99%
                                             '>
-                        <LazyImage width={250} src="/pictures/ootb.jpg" alt="开箱即用"/>
+                        <LazyImage width={250} height={250} src="/pictures/ootb.jpg" alt="开箱即用"/>
                         <SimpleMessage color='light' icon={faBoxOpen} title="开箱即用">
                             我们为 Jupyter Lab 编写插件，并且进行了深入的设置，使 Jupyter Lab 开箱即用。<br/>
                             你再也不需要在每一个笔记本的开头都 <code>import</code> 一大堆库了。<br/>
@@ -129,7 +129,7 @@ export default function Home() {
                                               hsl(0deg 0% 92%) 92%,
                                               hsl(0deg 0% 100%) 100%
                                             '>
-                        <LazyImage width={360} src="/pictures/data.webp" alt="（图文无关）"/>
+                        <LazyImage width={360} height={240} src="/pictures/data.webp" alt="（图文无关）"/>
                         <SimpleMessage color='success' icon={faWandMagicSparkles} title="两种数据调取方式">
                             你既可以通过数据库调取数据，也可以直接从文件读取数据。<br/>
                             两种方式任你选择。<br/>
@@ -155,7 +155,7 @@ export default function Home() {
                                               hsl(25deg 83% 50%) 93%,
                                               hsl(0deg 81% 50%) 100%
                                             '>
-                        <LazyImage width={200} src="/pictures/oauth2.png" alt="OAuth2"/>
+                        <LazyImage width={200} height={200} src="/pictures/oauth2.png" alt="OAuth2"/>
                         <SimpleMessage color='primary' icon={faLock} title="安全的登录认证">
                             我们全站配置了 SSL 和 HTTPS, 确保了通信的安全。<br/>
                             我们使用 OAuth2 标准进行 Jupyter Hub 的登录认证。<br/>
