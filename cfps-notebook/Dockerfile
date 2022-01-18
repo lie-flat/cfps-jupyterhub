@@ -77,7 +77,14 @@ RUN mkdir "/home/${NB_USER}/data" && \
     mkdir "/home/${NB_USER}/team-shared" && \
     fix-permissions "/home/${NB_USER}/team-shared"
 
+USER root
+
+COPY start-notebook.sh /usr/local/bin
 
 USER ${NB_UID}
 
 WORKDIR "${HOME}"
+
+ENTRYPOINT ["tini", "-g", "--"]
+
+CMD ["start-notebook.sh"]

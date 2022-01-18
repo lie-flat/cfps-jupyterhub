@@ -89,7 +89,7 @@ docker volume create --driver local -o o=bind -o type=none -o device="/home/$USE
 
 根据相关保密要求，我们不能提供 CFPS 数据集文件，请从官方渠道申请并下载。
 
-此 Repo 的 `cfps_dvapis` 文件夹也应该被复制到 `/home/$USER/jupyterhub-data/data` 中
+此 Repo 的 `cfps_dvapis` 文件夹和 `on_container_start_up.sh` 也应该被复制到 `/home/$USER/jupyterhub-data/data` 中
 
 ```
 /home/$USER/jupyterhub-data/data
@@ -104,7 +104,14 @@ docker volume create --driver local -o o=bind -o type=none -o device="/home/$USE
 │   ├── README.MD
 │   └── requirements.txt
 ├── cfps_dvapis
+|   └── ...
+├── notebooks
+|   └── ...
+└── on_container_start_up.sh
 ```
+
+注意要赋予 `on_container_start_up.sh` 可执行权限
+
 
 ## 系统配置
 
