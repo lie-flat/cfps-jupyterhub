@@ -60,3 +60,29 @@ c.Spawner.environment = {
     'DATABASE_NAME': DATABASE_NAME,
     'CFPS_SHELL_DATA_ROOT': '/home/jovyan/data/cfps-analyze/',
 }
+
+c.JupyterHub.load_roles = [
+    {
+        "name": "jupyterhub-idle-culler-role",
+        "scopes": [
+            "list:users",
+            "read:users:activity",
+            "read:servers",
+            "delete:servers",
+        ],
+        # assignment of role's permissions to:
+        "services": ["jupyterhub-idle-culler-service"],
+    }
+]
+
+c.JupyterHub.services = [
+    {
+        "name": "jupyterhub-idle-culler-service",
+        "command": [
+            sys.executable,
+            "-m", "jupyterhub_idle_culler",
+            "--timeout=3600",
+        ],
+        # "admin": True,
+    }
+]

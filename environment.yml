@@ -12,3 +12,4 @@ dependencies:
   - python-jose[cryptography]
   - passlib[bcrypt]
   - dockerspawner
+  - jupyterhub-idle-culler
