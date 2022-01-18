@@ -1,17 +1,29 @@
-async function loadEcharts() {
+async function loadJS(jsUrl) {
     return await new Promise(function (resolve, reject) {
         const script = document.createElement("script");
         script.onload = resolve;
         script.onerror = reject;
-        script.src = "https://assets.pyecharts.org/assets/echarts.min.js";
+        script.src = jsUrl;
         document.head.appendChild(script);
     }).then(() => {
-        console.log("echarts.min.js loaded");
+        console.log(`${jsUrl} loaded`);
         return true;
     }).catch(() => {
-        console.log("echarts.min.js failed to load");
+        console.log(`${jsUrl} failed to load`);
         return false;
     });
 }
 
-module.exports = loadEcharts;
+async function loadJSWithRetries(jsUrl) {
+    let retries = 0;
+    while (!(await loadJS(jsUrl))) {
+        if (retries > 5) {
+            console.log(`Failed to load ${jsUrl} after ${retries} retries`);
+            return false;
+        }
+        retries++;
+    }
+    return true;
+}
+
+module.exports = loadJSWithRetries;
