@@ -1,9 +1,4 @@
-jupyterhub
 mysql-connector-python
-numpy
-pandas
-sqlalchemy
-matplotlib
 PyMySQL
 tqdm
 pyecharts
