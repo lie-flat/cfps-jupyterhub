@@ -7,7 +7,7 @@ import SlideLayout from "../components/slide-layout";
 import {faStar, faStickyNote, faBoxOpen, faWandMagicSparkles, faLock} from "@fortawesome/free-solid-svg-icons";
 import SimpleMessage from "../components/simple-message";
 import 'react-lazy-load-image-component/src/effects/blur.css';
-import LazyImage from "../components/LazyImage";
+import LazyImage from "../components/lazy-image";
 import Head from "next/head";
 import {faDocker} from "@fortawesome/free-brands-svg-icons";
 
