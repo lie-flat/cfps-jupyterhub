@@ -10,6 +10,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 import LazyImage from "../components/lazy-image";
 import Head from "next/head";
 import {faDocker} from "@fortawesome/free-brands-svg-icons";
+import '@fortawesome/fontawesome-svg-core/styles.css'
 
 const GlobalStyles = createGlobalStyle`
   body {
