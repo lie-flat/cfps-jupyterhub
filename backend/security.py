@@ -5,9 +5,6 @@ from passlib.context import CryptContext
 
 from .config import SECRET_KEY
 
-# to get a string like this run:
-# openssl rand -hex 32
-
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
@@ -47,7 +44,7 @@ def create_access_token(data: dict, expires_delta: timedelta | None = None):
 
 def validate_password_strength(password):
     """
-    Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special characters
+    Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character
     """
     if not re.match(r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#?!@$%^&*_=|+-]).{8,128}$", password):
         return False
