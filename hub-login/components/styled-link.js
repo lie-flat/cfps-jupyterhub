@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import Link from "next/link";
 
 const StyledA = styled.a`
   margin: 25px 0 0 0;
