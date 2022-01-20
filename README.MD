@@ -37,7 +37,7 @@ Shandong University (Weihai)
 
 ## 安装
 
-假设你在使用 Linux 系统，已经安装好了 Anaconda、Docker 和 Nginx
+假设你在使用 Linux 系统，已经安装好了 Anaconda、Docker 和 Nginx，Node.js 和 Yarn
 
 同时假设您已完成大作业的第一部分的配置，MySQL 跑在默认的端口 3306 上。
 
@@ -90,6 +90,8 @@ docker volume create --driver local -o o=bind -o type=none -o device="/home/$USE
 根据相关保密要求，我们不能提供 CFPS 数据集文件，请从官方渠道申请并下载。
 
 此 Repo 的 `cfps_dvapis` 文件夹和 `on_container_start_up.sh` 也应该被复制到 `/home/$USER/jupyterhub-data/data` 中
+
+这个 Repo 的 notebooks 目录下是示例笔记本文件，也应当把这个目录拷贝过去。
 
 ```
 /home/$USER/jupyterhub-data/data
