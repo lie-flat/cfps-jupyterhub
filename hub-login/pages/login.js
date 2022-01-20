@@ -33,7 +33,9 @@ export default function Login() {
                             window.location.href = '/';
                         }
                     }).catch(err => {
-                        if (err?.response?.data?.detail) {
+                        if (err?.response?.status === 429) {
+                            helpers.setFieldError('username', '休息一下吧，您的请求过于频繁');
+                        } else if (err?.response?.data?.detail) {
                             const detail = err.response.data.detail;
                             if (typeof detail == "string") {
                                 helpers.setFieldError('username', detail);
