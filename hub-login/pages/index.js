@@ -40,7 +40,7 @@ export default function Home() {
                     </SlideLayout>
                 </Slide>
                 <Slide>
-                    <SlideLayout imagePosition='left' direction="60deg"
+                    <SlideLayout imagePosition='right' direction="60deg"
                                  gradients='  hsl(240deg 100% 20%) 0%,
                                               hsl(259deg 100% 23%) 11%,
                                               hsl(279deg 100% 27%) 22%,
@@ -87,7 +87,7 @@ export default function Home() {
                     </SlideLayout>
                 </Slide>
                 <Slide>
-                    <SlideLayout imagePosition='left' direction="225deg"
+                    <SlideLayout imagePosition='right' direction="225deg"
                                  gradients='  hsl(46deg 100% 62%) 1%,
                                               hsl(56deg 100% 62%) 38%,
                                               hsl(66deg 100% 61%) 46%,
@@ -139,7 +139,7 @@ export default function Home() {
                     </SlideLayout>
                 </Slide>
                 <Slide>
-                    <SlideLayout imagePosition='left' direction="315deg"
+                    <SlideLayout imagePosition='right' direction="315deg"
                                  gradients='  hsl(300deg 93% 65%) 0%,
                                               hsl(282deg 93% 62%) 7%,
                                               hsl(264deg 93% 59%) 14%,
