@@ -8,7 +8,8 @@ module.exports = [{
         await loadJSWithRetries('https://assets.pyecharts.org/assets/echarts.min.js');
         await Promise.all([
             loadJSWithRetries('https://assets.pyecharts.org/assets/echarts-wordcloud.min.js'),
-            loadJSWithRetries('https://assets.pyecharts.org/assets/maps/china.js')
+            loadJSWithRetries('https://assets.pyecharts.org/assets/maps/china.js'),
+            loadJSWithRetries('https://assets.pyecharts.org/assets/echarts-gl.min.js')
         ]);
     }
 }];
