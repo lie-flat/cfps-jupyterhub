@@ -1,6 +1,6 @@
 {
   "name": "jupyterlab_cfps_preload",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Load necessary files into Jupyter Lab",
   "keywords": [
     "jupyter",
