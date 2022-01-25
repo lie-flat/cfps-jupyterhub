@@ -69,7 +69,7 @@ ENV XDG_CACHE_HOME="/home/${NB_USER}/.cache/"
 RUN MPLBACKEND=Agg python -c "import matplotlib.pyplot" && \
     fix-permissions "/home/${NB_USER}"
 
-RUN pip3 install --no-cache mysql-connector-python PyMySQL tqdm pyecharts jupyterlab_cfps_preload
+RUN pip3 install --no-cache mysql-connector-python PyMySQL tqdm pyecharts jupyterlab_cfps_preload==0.4.0
 
 RUN mkdir "/home/${NB_USER}/data" && \
     fix-permissions "/home/${NB_USER}/data" && \
