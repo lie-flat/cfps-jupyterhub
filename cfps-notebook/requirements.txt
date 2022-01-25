@@ -1,5 +1,0 @@
-mysql-connector-python
-PyMySQL
-tqdm
-pyecharts
-jupyterlab_cfps_preload
