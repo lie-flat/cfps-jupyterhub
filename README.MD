@@ -35,6 +35,14 @@ Shandong University (Weihai)
 
 请各位数科班同学不要抄袭大作业
 
+## 整体网络设计
+
+![Networking Design](assets/network.png)
+
+## 登录注册及认证流程
+
+![Sign in, Sign up and Authenticate](assets/oauth2.png)
+
 ## 安装
 
 假设你在使用 Linux 系统，已经安装好了 Anaconda、Docker 和 Nginx，Node.js 和 Yarn
@@ -303,3 +311,17 @@ yarn build
 按下 <kbd>Ctrl</kbd> + <kbd>B</kbd> , 然后按下 <kbd>d</kbd>, 可以与当前的 tmux 会话分离
 
 使用 `tmux attach` 命令可以重新进入原来的 tmux 会话
+
+## 使用
+
+在完成账号注册与登录之后，您将会进入您的专属实例。
+
+您可以点击 `Settings > Language > Chinese (Simplified, China)` 这个菜单项来将界面语言切换成中文。
+
+![lang](assets/lang.png)
+
+推荐您先查看 `欢迎使用.ipynb`,我们在其中编写了项目说明、使用教程和 FAQ。
+
+我们所作的 23 种数据可视化在 `20种数据可视化` 这个文件夹中，每一种可视化都有一个单独的笔记本文件。
+
+![Data Visualizations](assets/dv.png)
