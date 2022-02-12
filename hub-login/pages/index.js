@@ -1,11 +1,14 @@
 import {FullPage, Slide} from 'react-full-page';
+import HeadSlide from '../components/slides/head-slide';
+import FootSlide from '../components/slides/foot-slide';
 import 'bulma/css/bulma.min.css';
-import {createGlobalStyle} from "styled-components"; //
-import SlideLayout from "../components/slide-layout"; //
+import {createGlobalStyle} from "styled-components";
+import SlideLayout from "../components/slide-layout";
 import {faStar, faStickyNote, faBoxOpen, faWandMagicSparkles, faLock} from "@fortawesome/free-solid-svg-icons";
-import SimpleMessage from "../components/simple-message"; //
+import SimpleMessage from "../components/simple-message";
 import 'react-lazy-load-image-component/src/effects/blur.css';
-import LazyImage from "../components/lazy-image";//
+import LazyImage from "../components/lazy-image";
+import Head from "next/head";
 import {faDocker} from "@fortawesome/free-brands-svg-icons";
 import '@fortawesome/fontawesome-svg-core/styles.css'
 
@@ -18,14 +21,19 @@ const GlobalStyles = createGlobalStyle`
 export default function Home() {
     return (
         <>
-            
+            <Head>
+                <title>CFPS JupyterHub</title>
+            </Head>
             <GlobalStyles/>
             <FullPage duration={400}>
-                
                 <Slide>
-                    <SlideLayout direction="-45deg" gradients='#609895,#72a6a3,#c3d9d8,#ebf2f2'  imagePosition='left'>
-                    
-                        <LazyImage width={360} height={112.717} src="/pictures/cfps.gif" alt="CFPS（China Family Panel Studies）"/>
+                    <HeadSlide/>
+                </Slide>
+                <Slide>
+                    <SlideLayout direction="-45deg" gradients='#609895,#72a6a3,#c3d9d8,#ebf2f2' imagePosition='left'>
+
+                        <LazyImage width={360} height={112.717} src="/pictures/cfps.gif"
+                                   alt="CFPS（China Family Panel Studies）"/>
                         <SimpleMessage color='info' icon={faStar} title="基于 CFPS 数据的多人大数据分析平台">
                             我们使用 JupyterHub 和 JupyterLab 搭建了一个多人大数据分析平台，可以供一个团队对 CFPS 数据集进行在线的数据分析和可视化。<br/>
                             CFPS，全称中国家庭追踪调查（China Family Panel
@@ -34,7 +42,7 @@ export default function Home() {
                     </SlideLayout>
                 </Slide>
                 <Slide>
-                <SlideLayout direction="-45deg" gradients='#f2997d,#f7c1b1' imagePosition='left'>
+                    <SlideLayout direction="-45deg" gradients='#f2997d,#f7c1b1' imagePosition='left'>
                         <LazyImage width={400} height={202.283} src="/pictures/jupyterlab.png" alt="Project Jupyter"/>
                         <SimpleMessage color='link' icon={faStickyNote} title="我们使用了 Jupyter Lab 而非 Jupyter Notebook">
                             相比于 Jupyter Notebook, JupyterLab 更加安全，也提供了更多的功能。 <br/>
@@ -45,7 +53,8 @@ export default function Home() {
                     </SlideLayout>
                 </Slide>
                 <Slide>
-                    <SlideLayout direction="-45deg" gradients='#1a94a0,#1a94a0,#3acfdf,#b9eef4,#dcf7f9' imagePosition='left'>
+                    <SlideLayout direction="-45deg" gradients='#1a94a0,#1a94a0,#3acfdf,#b9eef4,#dcf7f9'
+                                 imagePosition='left'>
                         <LazyImage width={400} height={296.45} src="/pictures/docker.png" alt="Docker"/>
                         <SimpleMessage color='warning' icon={faDocker} title="使用 Docker 容器">
                             Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中,容器是完全使用沙箱机制,相互之间不会有任何接口。<br/>
@@ -56,7 +65,7 @@ export default function Home() {
                     </SlideLayout>
                 </Slide>
                 <Slide>
-                <SlideLayout direction="-45deg" gradients='#dbc815,#f9f3be,#fbf7d4' imagePosition='left'>
+                    <SlideLayout direction="-45deg" gradients='#dbc815,#f9f3be,#fbf7d4' imagePosition='left'>
                         <LazyImage width={250} height={250} src="/pictures/ootb.jpg" alt="开箱即用"/>
                         <SimpleMessage color='light' icon={faBoxOpen} title="开箱即用">
                             我们为 Jupyter Lab 编写插件，并且进行了深入的设置，使 Jupyter Lab 开箱即用。<br/>
@@ -90,7 +99,7 @@ export default function Home() {
                     </SlideLayout>
                 </Slide>
                 <Slide>
-                <SlideLayout direction="-45deg" gradients='#074922,#68f09f,#a9f7c8,#e9fdf1'  imagePosition='right'>
+                    <SlideLayout direction="-45deg" gradients='#074922,#68f09f,#a9f7c8,#e9fdf1' imagePosition='right'>
                         <LazyImage width={200} height={200} src="/pictures/oauth2.png" alt="OAuth2"/>
                         <SimpleMessage color='primary' icon={faLock} title="安全的登录认证">
                             我们全站配置了 SSL 和 HTTPS, 确保了通信的安全。<br/>
@@ -98,7 +107,9 @@ export default function Home() {
                         </SimpleMessage>
                     </SlideLayout>
                 </Slide>
-                
+                <Slide>
+                    <FootSlide/>
+                </Slide>
             </FullPage>
         </>
     )
