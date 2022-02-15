@@ -22,7 +22,7 @@ export default function FootSlide() {
                 <ThinButton color='warning' renderAs='a' href="https://github.com/lie-flat/cfps-jupyterhub">
                     <IconText size="sm" icon={faGithub}>Github</IconText>
                 </ThinButton>
-                <ThinButton color='danger' renderAs='a' href="#">
+                <ThinButton color='danger' renderAs='a' href="https://www.bilibili.com/video/BV1K44y1p7u5">
                     <IconText size="sm" icon={faBilibili}>Bilibili</IconText>
                 </ThinButton>
             </Button.Group>

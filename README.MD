@@ -8,6 +8,8 @@ Shandong University (Weihai)
 
 选题：JupyterHub
 
+讲解视频： https://www.bilibili.com/video/BV1K44y1p7u5
+
 ## 前言
 
 根据 《山东大学学生违纪处分实施细则》分则
