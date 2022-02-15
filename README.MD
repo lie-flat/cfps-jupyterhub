@@ -6,9 +6,10 @@ Shandong University (Weihai)
 
 2021 年秋 - 2022 年春 前端开发和数据库课程 大作业 第三部分
 
-选题：JupyterHub
-
-讲解视频： https://www.bilibili.com/video/BV1K44y1p7u5
+- 选题：JupyterHub
+- 网址： https://hub.kxxt.tech
+- 讲解视频： https://www.bilibili.com/video/BV1K44y1p7u5
+- 部分讲解幻灯片： https://github.com/lie-flat/slides
 
 ## 前言
 
